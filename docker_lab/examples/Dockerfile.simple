@@ -1,0 +1,15 @@
+# Dockerfile đơn giản - Python app
+# Ví dụ cho Lab 2
+FROM python:3.10-slim
+
+WORKDIR /app
+
+# Copy requirements trước để tận dụng layer cache
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy code
+COPY . .
+
+# Chạy ứng dụng
+CMD ["python", "app.py"]

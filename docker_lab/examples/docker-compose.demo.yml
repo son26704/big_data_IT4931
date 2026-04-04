@@ -1,0 +1,18 @@
+# Ví dụ Docker Compose - Lab 3
+# Chạy: docker compose -f docker-compose.demo.yml up -d
+services:
+  web:
+    image: nginx:alpine
+    ports:
+      - "8080:80"
+    networks:
+      - demo_net
+
+  redis:
+    image: redis:alpine
+    networks:
+      - demo_net
+
+networks:
+  demo_net:
+    driver: bridge
