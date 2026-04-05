@@ -17,7 +17,8 @@ tqdm==4.66.1
 requests==2.31.0
 
 # JSON and serialization
-avro-python3==1.11.3
+# 1.11.3 is not published on PyPI for avro-python3; 1.10.2 is the latest stable release.
+avro-python3==1.10.2
 fastavro==1.9.0
 
 # Redis for caching
