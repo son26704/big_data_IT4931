@@ -92,8 +92,8 @@ def test_spark_connection():
     except Exception as e:
         print("\n❌ Spark cluster connectivity test failed: {}".format(e))
         print("\n💡 Troubleshooting tips:")
-        print("   - Make sure Spark cluster is running: docker-compose up -d")
-        print("   - Check if spark-master:7077 is accessible")
+        print("   - Make sure Spark cluster is running: docker compose up -d")
+        print("   - Check if localhost:7077 is accessible")
         print("   - Verify Docker containers are healthy")
         print("   - Check network connectivity between containers")
         return False
@@ -139,7 +139,7 @@ def test_kafka_connection():
     except Exception as e:
         print("❌ Kafka connectivity test failed: {}".format(e))
         print("\n💡 Troubleshooting tips:")
-        print("   - Make sure Kafka is running: docker-compose up -d")
+        print("   - Make sure Kafka is running: docker compose up -d")
         print("   - Check if localhost:9092 is accessible")
         print("   - Verify Kafka containers are healthy")
         return False

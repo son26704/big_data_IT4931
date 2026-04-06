@@ -1,9 +1,11 @@
 # Spark Lab - Big Data Processing with Apache Spark
 
 ## 🎯 Overview
+
 This lab provides hands-on experience with Apache Spark for big data processing, including batch processing, streaming, and machine learning.
 
 ## 🏗️ Architecture
+
 - **Spark Cluster**: Master + 2 Workers (distributed processing)
 - **Kafka**: KRaft mode for streaming data ingestion
 - **PostgreSQL**: Structured data storage
@@ -13,12 +15,14 @@ This lab provides hands-on experience with Apache Spark for big data processing,
 ## 🚀 Quick Start
 
 ### Prerequisites
+
 - Docker and Docker Compose
 - Python 3.8+ (for local development)
 - Git
 - Conda environment (datalab)
 
 ### Setup
+
 ```bash
 # Navigate to Spark lab
 cd Spark_lab
@@ -41,6 +45,7 @@ docker-compose ps
 ```
 
 ### Access Points
+
 - **Spark Master UI**: http://localhost:8080
 - **Jupyter Lab**: http://localhost:8888
 - **PostgreSQL**: localhost:5432
@@ -50,9 +55,11 @@ docker-compose ps
 ## 📚 Lab Structure
 
 ### Lab 1: Spark Batch Processing ✅
+
 **File**: `notebooks/01_spark_batch_processing.ipynb`
 
 **Topics Covered**:
+
 - DataFrame operations (select, filter, groupBy, join)
 - Aggregations and window functions
 - Multi-table joins and data integration
@@ -60,11 +67,13 @@ docker-compose ps
 - Data persistence and export (Parquet, JSON, CSV)
 
 **Sample Datasets**:
+
 - Sales transactions (1000 records)
 - Customer demographics (8 customers)
 - Product catalog (8 products)
 
 **Exercises**:
+
 1. Basic DataFrame Operations
 2. Aggregations and Grouping
 3. Joins and Data Integration
@@ -72,9 +81,11 @@ docker-compose ps
 5. Data Persistence and Export
 
 ### Lab 2: Spark Streaming ✅
+
 **File**: `notebooks/02_spark_streaming.ipynb`
 
 **Topics Covered**:
+
 - Event-time vs Processing-time
 - Tumbling windows (fixed, non-overlapping)
 - Sliding windows (overlapping windows)
@@ -84,11 +95,13 @@ docker-compose ps
 - Real-world streaming pipelines
 
 **Sample Datasets**:
+
 - Event streams with timestamps
 - Late-arriving data scenarios
 - User activity events
 
 **Exercises**:
+
 1. Event-Time vs Processing-Time
 2. Tumbling Windows (Fixed Windows)
 3. Sliding Windows (Overlapping Windows) ⭐
@@ -98,9 +111,11 @@ docker-compose ps
 7. Real-World Streaming Pipeline
 
 ### Lab 3: Spark MLlib ✅
+
 **File**: `notebooks/03_spark_ml.ipynb`
 
 **Topics Covered**:
+
 - Feature engineering with Spark ML
 - Classification (Random Forest)
 - ML pipeline creation
@@ -108,11 +123,13 @@ docker-compose ps
 - Customer segmentation
 
 **Sample Datasets**:
+
 - Customer classification (1000 records)
 - Sales regression (800 records)
 - Customer clustering (600 records)
 
 **Exercises**:
+
 1. Customer Classification (Random Forest)
 2. Sales Regression (Linear Regression)
 3. Customer Clustering (K-means)
@@ -120,9 +137,11 @@ docker-compose ps
 5. Feature Engineering Pipeline
 
 ### Lab 4: Spark SQL ✅
+
 **File**: `notebooks/04_spark_sql.ipynb`
 
 **Topics Covered**:
+
 - Spark SQL basics (spark.sql())
 - Register DataFrames as temporary views
 - JOIN operations with SQL syntax
@@ -132,10 +151,12 @@ docker-compose ps
 - Catalog management
 
 **Sample Datasets**:
+
 - Sales transactions (1000 records)
 - Customer demographics (8 customers)
 
 **Exercises**:
+
 1. Basic Spark SQL Queries
 2. JOIN Operations with SQL
 3. Window Functions with SQL
@@ -145,9 +166,11 @@ docker-compose ps
 7. Catalog Management
 
 ### Lab 5: Spark + Iceberg Integration ✅
+
 **File**: `notebooks/05_spark_iceberg_integration.ipynb`
 
 **Topics Covered**:
+
 - Spark session configuration with Iceberg extensions
 - Read and write Iceberg tables from Spark
 - Schema evolution with Spark
@@ -156,9 +179,11 @@ docker-compose ps
 - Integration best practices
 
 **Sample Datasets**:
+
 - Sales transactions with timestamps (1000 records)
 
 **Exercises**:
+
 1. Create Sample Data and Setup
 2. Write to Iceberg Table
 3. Read from Iceberg Table
@@ -170,9 +195,11 @@ docker-compose ps
 **Note**: Full Iceberg functionality requires Iceberg Spark runtime JAR. The notebook includes examples and patterns that work when the JAR is available.
 
 ### Lab 6: Spark + Kafka Integration ✅
+
 **File**: `notebooks/06_spark_kafka_integration.ipynb`
 
 **Topics Covered**:
+
 - Kafka topic setup and configuration
 - Kafka producer (Python) to send events
 - Spark reading from Kafka topics
@@ -184,10 +211,12 @@ docker-compose ps
 - Continuous producer for testing
 
 **Sample Datasets**:
+
 - Real-time events sent to Kafka topics
 - User activity events (clicks, views, purchases)
 
 **Exercises**:
+
 1. Setup Kafka Topics
 2. Create Kafka Producer
 3. Read from Kafka với Spark
@@ -198,6 +227,7 @@ docker-compose ps
 8. Continuous Producer (Background Thread)
 
 **Prerequisites**:
+
 - Kafka running (via docker-compose.yml)
 - Kafka topics created
 - Kafka Python library installed
@@ -205,29 +235,34 @@ docker-compose ps
 ## 🔧 Configuration
 
 ### Environment Variables
+
 The lab uses the following configuration (see `.env` file):
+
 ```bash
 # Spark Configuration
-SPARK_MASTER_URL=spark://spark-master:7077
+SPARK_MASTER_URL=spark://localhost:7077
 SPARK_APP_NAME=SparkLab
 
 # Database Configuration
-POSTGRES_HOST=postgres
+POSTGRES_HOST=localhost
 POSTGRES_PORT=5432
 POSTGRES_DB=spark_lab
 POSTGRES_USER=spark_user
 POSTGRES_PASSWORD=spark_password
 
 # Kafka Configuration
-KAFKA_BOOTSTRAP_SERVERS=kafka:29092
+KAFKA_BOOTSTRAP_SERVERS=localhost:9092
 KAFKA_TOPIC_PREFIX=spark_lab
 
 # Redis Configuration
-REDIS_HOST=redis
+REDIS_HOST=localhost
 REDIS_PORT=6379
 ```
 
+If you run code inside Docker containers on the `spark-network`, use internal hostnames (`spark-master`, `kafka`, `postgres`, `redis`) instead of `localhost`.
+
 ### Spark Configuration
+
 - **Master**: 1 core, 1GB RAM
 - **Workers**: 2 cores, 2GB RAM each
 - **Total Cluster**: 5 cores, 5GB RAM
@@ -235,6 +270,7 @@ REDIS_PORT=6379
 ## 📊 Sample Data Generation
 
 ### Batch Data
+
 ```python
 # Generate sales data
 python scripts/generate_sales_data.py
@@ -244,6 +280,7 @@ python scripts/generate_customer_data.py
 ```
 
 ### Streaming Data
+
 ```python
 # Start IoT sensor simulator
 python scripts/iot_sensor_simulator.py
@@ -255,6 +292,7 @@ python scripts/web_click_simulator.py
 ## 🛠️ Development
 
 ### Local Development
+
 ```bash
 # Install dependencies
 pip install -r requirements.txt
@@ -267,6 +305,7 @@ python code/batch_processing/sales_analysis.py
 ```
 
 ### Jupyter Development
+
 1. Access Jupyter Lab at http://localhost:8888
 2. Use the provided notebooks in `notebooks/` directory
 3. Spark context is automatically configured
@@ -274,14 +313,17 @@ python code/batch_processing/sales_analysis.py
 ## 📈 Monitoring
 
 ### Spark UI
+
 - **Master**: http://localhost:8080
 - **Application**: http://localhost:4040 (when running)
 
 ### Kafka Monitoring
+
 - **Topics**: Use Kafka CLI tools
 - **Consumer Groups**: Monitor via Spark UI
 
 ### Database Monitoring
+
 - **PostgreSQL**: Connect via psql or GUI tools
 - **Redis**: Use redis-cli or GUI tools
 
@@ -290,11 +332,13 @@ python code/batch_processing/sales_analysis.py
 ### Common Issues
 
 1. **Spark Master not accessible**
+
    ```bash
    docker-compose logs spark-master
    ```
 
 2. **Kafka connection issues**
+
    ```bash
    docker-compose logs kafka
    ```
@@ -304,6 +348,7 @@ python code/batch_processing/sales_analysis.py
    - Verify network connectivity
 
 ### Logs
+
 ```bash
 # View all logs
 docker-compose logs -f
@@ -316,18 +361,21 @@ docker-compose logs -f kafka
 ## 📝 Best Practices
 
 ### Performance
+
 - Use appropriate partitioning strategies
 - Cache frequently accessed DataFrames
 - Optimize shuffle operations
 - Use broadcast joins for small tables
 
 ### Development
+
 - Use Jupyter notebooks for exploration
 - Move to Python scripts for production
 - Implement proper error handling
 - Use logging for debugging
 
 ### Data Management
+
 - Use Parquet format for storage
 - Implement data validation
 - Use schema evolution strategies
@@ -336,6 +384,7 @@ docker-compose logs -f kafka
 ## 🎓 Learning Objectives
 
 After completing this lab, you will be able to:
+
 - Process large datasets with Spark DataFrames
 - Implement real-time data processing with Structured Streaming
 - Build machine learning pipelines with Spark MLlib
